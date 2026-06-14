@@ -19,7 +19,7 @@ func PrintHint(infoFile string) {
 		return
 	}
 	fmt.Printf("\nHint for %s:\n", exercise.Name)
-	color.Yellow(exercise.Hint)
+	color.Yellow(strings.Join(exercise.Hints, "\n\n"))
 }
 
 func PrintSpecificHint(name string, infoFile string) {
@@ -29,7 +29,7 @@ func PrintSpecificHint(name string, infoFile string) {
 		return
 	}
 	fmt.Printf("\nHint for %s:\n", exercise.Name)
-	color.Yellow(exercise.Hint)
+	color.Yellow(strings.Join(exercise.Hints, "\n\n"))
 }
 
 func PrintList(infoFile string) {

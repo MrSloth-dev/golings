@@ -66,7 +66,7 @@ var _ = Describe("Exercises", func() {
 				Expect(exercise.Name).To(Equal("compile1"))
 				Expect(exercise.Path).To(Equal("compile/compile1.go"))
 				Expect(exercise.Mode).To(Equal("compile"))
-				Expect(exercise.Hint).To(Equal("hints are cool"))
+				Expect(exercise.Hints).To(Equal([]string{"hints are cool"}))
 			})
 		})
 		When("exercise does not exist in the info file", func() {

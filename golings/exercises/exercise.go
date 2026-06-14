@@ -4,7 +4,7 @@ type Exercise struct {
 	Name string
 	Path string
 	Mode string
-	Hint string
+	Hints []string
 }
 
 func (e Exercise) State() State {

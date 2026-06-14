@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"strings"
 
 	"github.com/fatih/color"
 	"github.com/bradmyrick/golings/golings/exercises"
@@ -26,7 +27,7 @@ func HintCmd(infoFile string) *cobra.Command {
 				color.Red(err.Error())
 				os.Exit(1)
 			}
-			color.Yellow(exercise.Hint)
+			color.Yellow(strings.Join(exercise.Hints, "\n\n"))
 		},
 	}
 }

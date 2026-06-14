@@ -110,8 +110,18 @@ func WatchCmd(infoFile string) *cobra.Command {
 						case 'n':
 							MoveToNextAndRun(infoFile)
 						case 'h':
-							if lastState != nil {
-								lastState.ShowHint = !lastState.ShowHint
+							if lastState != nil && len(lastState.Exercise.Hints) > 0 {
+								if lastState.ShowHint {
+									if lastState.HintIndex == len(lastState.Exercise.Hints)-1 {
+										lastState.ShowHint = false
+										lastState.HintIndex = 0
+									} else {
+										lastState.HintIndex++
+									}
+								} else {
+									lastState.ShowHint = true
+									lastState.HintIndex = 0
+								}
 								RefreshUI()
 							}
 						case 'l':
