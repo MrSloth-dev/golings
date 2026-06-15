@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/charmbracelet/lipgloss"
 	"github.com/bradmyrick/golings/golings/exercises"
+	"github.com/charmbracelet/lipgloss"
 	"golang.org/x/term"
 )
 
@@ -30,6 +30,7 @@ type UIState struct {
 	TerminalWidth  int
 	TerminalHeight int
 	ShowHint       bool
+	HintIndex      int
 }
 
 var (
@@ -140,12 +141,15 @@ func Render(state UIState) string {
 		)
 	}
 
-	if state.ShowHint {
+	if state.ShowHint && len(state.Exercise.Hints) > 0 {
 		doc.WriteString("\n")
+		hintText := fmt.Sprintf("Hint %d/%d:\n%s", state.HintIndex+1,
+			len(state.Exercise.Hints),
+			state.Exercise.Hints[state.HintIndex])
 		doc.WriteString(
 			hintStyle.
 				Width(w).
-				Render(state.Exercise.Hint) + "\n",
+				Render(hintText + "\n"),
 		)
 		doc.WriteString("\n")
 	}
