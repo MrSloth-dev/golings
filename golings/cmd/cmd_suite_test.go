@@ -7,6 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 
 	"github.com/bradmyrick/golings/golings/cmd"
+	"github.com/bradmyrick/golings/golings/exercises"
 )
 
 func TestCmd(t *testing.T) {
@@ -27,6 +28,8 @@ var _ = Describe("Commands", func() {
 		})
 	})
 	Describe("Run", func() {
+		BeforeEach(func() { exercises.ExerciseRoot = "../fixtures" })
+		AfterEach(func() { exercises.ExerciseRoot = "exercises" })
 		Context("Running 'compile' mode exercises", func() {
 			When("it is compilable", func() {
 				It("returns success", func() {

@@ -80,9 +80,10 @@ func runTest(e Exercise) (Result, error) {
 	return Result{Exercise: e, Out: stdout.String(), Err: stderr.String()}, err
 
 }
+var ExerciseRoot = "exercises"
 
 func validatePath(path string) (string, error) {
-	exerciseBase, err := filepath.Abs("exercises")
+	exerciseBase, err := filepath.Abs(ExerciseRoot)
 	if err != nil {
 		return "", fmt.Errorf("failed to get exercises base path: %w", err)
 	}
